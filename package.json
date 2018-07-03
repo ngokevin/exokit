@@ -13,8 +13,8 @@
     "install": "node ./preinstall.js && node-gyp rebuild",
     "build": "node-gyp rebuild",
     "start": "node .",
-    "test": "cross-env NODE_ENV=test mocha --watch tests/unit/**/*.test.js",
-    "test:ci": "cross-env NODE_ENV=test mocha tests/unit/**/*.test.js"
+    "test:ci": "cross-env NODE_ENV=test mocha tests/unit/**/*.test.js",
+    "test:watch": "cross-env NODE_ENV=test mocha --watch tests/unit/**/*.test.js"
   },
   "repository": {
     "type": "git",
