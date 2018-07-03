@@ -13,7 +13,8 @@
     "install": "node ./preinstall.js && node-gyp rebuild",
     "build": "node-gyp rebuild",
     "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "cross-env NODE_ENV=test mocha --watch tests/unit/**/*.test.js",
+    "test:ci": "cross-env NODE_ENV=test mocha tests/unit/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
   "dependencies": {
     "@rgrove/parse-xml": "^1.1.1",
     "bugsnag": "^2.4.3",
+    "cross-env": "^5.2.0",
     "css": "^2.2.3",
     "exokit-home": "0.0.69",
     "fake-indexeddb": "^2.0.4",
@@ -73,5 +75,10 @@
     "window-worker": "0.0.68",
     "window-xhr": "0.0.19",
     "ws": "^5.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "sinon": "^6.0.1"
   }
 }
