@@ -481,13 +481,15 @@ nativeWindow.setEventHandler((type, data) => {
         // XXX The overlay detection here is a hack.
         // It's only needed because sibling overlay elements sometimes expect to capture events instead of the canvas.
         // The correct way to handle this is to compute actual layout with something like reworkcss + Yoga.
-        let dispatchEl = null;
-        if (!window.document.pointerLockElement && !vrPresentState.isPresenting && (dispatchEl = window.document.documentElement.traverse(el => {
-          if (el.nodeType === 1 && (el.tagName === 'BUTTON' || window.getComputedStyle(el).cursor === 'pointer')) {
-            return el;
+        if (!process.env.SKIP_OVERLAY_DETECTION) {
+          let dispatchEl = null;
+          if (!window.document.pointerLockElement && !vrPresentState.isPresenting && (dispatchEl = window.document.documentElement.traverse(el => {
+            if (el.nodeType === 1 && (el.tagName === 'BUTTON' || window.getComputedStyle(el).cursor === 'pointer')) {
+              return el;
+            }
+          }))) {
+            dispatchEl.dispatchEvent(e);
           }
-        }))) {
-          dispatchEl.dispatchEvent(e);
         }
 
         canvas.dispatchEvent(e);
