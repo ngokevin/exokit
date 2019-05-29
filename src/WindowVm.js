@@ -107,10 +107,10 @@ class WorkerVm extends EventEmitter {
   }
   
   destroy() {
-    /* const symbols = Object.getOwnPropertySymbols(this.worker);
+    const symbols = Object.getOwnPropertySymbols(this.worker);
     const publicPortSymbol = symbols.find(s => s.toString() === 'Symbol(kPublicPort)');
     const publicPort = this.worker[publicPortSymbol];
-    publicPort.close(); */
+    publicPort.close();
   }
 
   get onmessage() {

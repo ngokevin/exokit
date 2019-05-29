@@ -1340,6 +1340,6 @@ global.onexit = () => {
     localContexts[i].destroy();
   }
   
-  AudioContext.Destroy();
+  // AudioContext.Destroy();
 };
 // global.setImmediate = undefined; // need this for the TLS implementation
