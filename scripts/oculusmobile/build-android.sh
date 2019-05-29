@@ -63,6 +63,9 @@ rsync -a --copy-links lib/ ./android/app/assets/lib
 rsync -a --copy-links examples/ ./android/app/assets/examples
 rsync -a --copy-links node_modules/* ./android/app/assets/node_modules/
 rsync -a --relative --copy-links build/Release/exokit.node ./android/app/assets/
+mkdir -p ./android/app/assets/app
+rsync -a /mnt/c/Users/admin/Code/moonrider/.ghpages/ ./android/app/assets/app/
+
 ./scripts/gen-assets-h.js >android/app/assets/index.bin
 
 # build apk

@@ -37,11 +37,11 @@ std::vector<const char *> getDefaultArguments() {
   }
 
   std::vector<const char *> result = {
-    "node",
+    "node --experimental-worker",
 #ifndef ANDROID
-    ".",
-#else
     "/package",
+#else
+    "/package", "-x", "webvr", "/package/app/index.html",
 #endif
     launchUrl,
   };
